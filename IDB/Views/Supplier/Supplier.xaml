@@ -1,0 +1,64 @@
+﻿<Controls:MetroWindow x:Class="IDB.Supplier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:IDB"
+        mc:Ignorable="d"
+        Title="Supplier" Height="600" Width="800"
+        EnableDWMDropShadow="True"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationErrorTemplate">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Grid Width="12" Height="12">
+                        <Ellipse Width="12" Height="12" Fill="Red" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                        <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" ToolTip="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
+                    </Grid>
+                    <TextBlock Foreground="Red" FontSize="10" Margin="2,0,0,0" Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
+                </StackPanel>
+                <AdornedElementPlaceholder x:Name="ErrorAdorner" ></AdornedElementPlaceholder>
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="464" Margin="10,72,0,0" VerticalAlignment="Top" Width="774">
+            <TabItem x:Name="SupplierTab" Header="Personal">
+                <Grid Background="White" Margin="0,-1,0,15">
+                    <Label Content="First Name" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="SupplierName"  Text="{Binding supplierName, UpdateSourceTrigger=PropertyChanged}"  Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Enter First Name here" HorizontalAlignment="Left" Height="23" Margin="152,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Address1" Text="{Binding addressLine1, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Postal Code" HorizontalAlignment="Left" Height="23" Margin="520,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Address2" Text="{Binding addressLine2, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Address Line 1" HorizontalAlignment="Left" Height="23" Margin="520,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Address3" Text="{Binding addressLine3, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Address Line 2" HorizontalAlignment="Left" Height="23" Margin="520,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="MobileContact" Text="{Binding mobileContact, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contact 1" HorizontalAlignment="Left" Height="23" Margin="152,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <Label Content="Mobile" HorizontalAlignment="Left" Margin="24,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Address" HorizontalAlignment="Left" Margin="428,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+
+                    <TextBox x:Name="HomeContact" Text="{Binding homeContact, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contact 2" HorizontalAlignment="Left" Height="23" Margin="520,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46" RenderTransformOrigin="1.953,-1.136"/>
+                    <Label Content="Fixed Line" HorizontalAlignment="Left" Margin="428,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Button x:Name="saveButton" HorizontalAlignment="Left" Margin="428,315,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Save" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="saveButton_Click"/>
+                    <Button x:Name="clearButton" HorizontalAlignment="Left" Margin="241,315,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Clear" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="clearButton_Click"/>
+                    <Label Content="Company Name" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <TextBox x:Name="CompanyName" Grid.Row="0" Validation.ErrorTemplate="{StaticResource validationErrorTemplate}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Company Name" HorizontalAlignment="Left" Height="23" Margin="152,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46">
+                        <TextBox.Text>
+                            <Binding Path="companyName" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True" ValidatesOnDataErrors="True" ValidatesOnExceptions="True">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                   
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Separator HorizontalAlignment="Left" Height="20" Margin="22,52,0,0" VerticalAlignment="Top" Width="762"/>
+        <Label Content="Add New Supplier" HorizontalAlignment="Left" Margin="72,5,0,0" VerticalAlignment="Top" Height="58" Width="281" Background="{x:Null}" Foreground="#FF3373F2" FontFamily="Segoe UI Light" FontSize="34"/>
+        <Button x:Name="back" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="22,13,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="Black" Click="back_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/IDB;component/Icons/appbar.arrow.left.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

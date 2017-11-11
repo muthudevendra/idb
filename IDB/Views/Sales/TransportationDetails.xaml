@@ -1,0 +1,50 @@
+﻿<Controls:MetroWindow x:Class="IDB.TransportationDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:IDB"
+        mc:Ignorable="d"
+        Title="Transportation Details" Height="600" Width="800"
+        EnableDWMDropShadow="True"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="474" Margin="10,72,0,0" VerticalAlignment="Top" Width="774">
+            <TabItem x:Name="transportTab">
+                <Grid Background="White">
+                    <Label Content="Customer Name" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Driver Name" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="CustomerName" SelectedValue="{Binding customerName, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select customer" HorizontalAlignment="Left" Margin="144,26,0,0" VerticalAlignment="Top" Width="215"/>
+                    <ComboBox x:Name="DriverName" Text="{Binding driverName, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select Driver" HorizontalAlignment="Left" Height="23" Margin="520,79,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Income" IsEnabled="False" Text="{Binding income, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Income in Rs." HorizontalAlignment="Left" Height="23" Margin="520,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <DatePicker x:Name="RequestDate" Text="{Binding date, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Transport Requset Date" HorizontalAlignment="Left" Height="23" Margin="144,131,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="ArrivalTime" Text="{Binding arrivalTime, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Arrival Time (eg: 1)" HorizontalAlignment="Left" Height="23" Margin="520,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <ComboBox x:Name="VehicleNo" Text="{Binding vehicleNo, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select Vehicle" HorizontalAlignment="Left" Height="23" Margin="144,79,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Desination" Text="{Binding destination, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Destination in Km (eg:12km)" HorizontalAlignment="Left" Height="23" Margin="144,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <Label Content="Arrival Time" HorizontalAlignment="Left" Margin="418,131,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Destination" HorizontalAlignment="Left" Margin="24,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+
+                    <TextBox x:Name="Distance" Text="{Binding distance, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Distance in Km (eg: 10)" HorizontalAlignment="Left" Height="23" Margin="520,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46" TextChanged="Distance_TextChanged"/>
+                    <Label Content="Date" HorizontalAlignment="Left" Margin="24,131,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Button x:Name="saveButton" HorizontalAlignment="Left" Margin="418,375,0,0" VerticalAlignment="Top" Width="122" Height="30" BorderBrush="#FFCCCCCC" Content="Requset Confirm" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="saveButton_Click"/>
+                    <Button x:Name="clearButton" HorizontalAlignment="Left" Margin="259,375,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Clear" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="clearButton_Click"/>
+                    <Label Content="Vehicle" HorizontalAlignment="Left" Margin="24,79,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Income" HorizontalAlignment="Left" Margin="418,278,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Distance" HorizontalAlignment="Left" Margin="418,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077" Width="66"/>
+                    <Label Content="Selling Center" HorizontalAlignment="Left" Margin="419,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <ComboBox x:Name="SellingCenter" SelectedValue="{Binding sellingCenter, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select a Selling Center" HorizontalAlignment="Left" Margin="520,26,0,0" VerticalAlignment="Top" Width="215" SelectionChanged="SellingCenter_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Separator HorizontalAlignment="Left" Height="20" Margin="22,52,0,0" VerticalAlignment="Top" Width="762"/>
+        <Label Content="Transportation Details" HorizontalAlignment="Left" Margin="72,9,0,0" VerticalAlignment="Top" Height="58" Width="322" Background="{x:Null}" Foreground="#FF3373F2" FontFamily="Segoe UI Light" FontSize="34"/>
+        <Button x:Name="back" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="22,13,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="Black" Click="back_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/IDB;component/Icons/appbar.arrow.left.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

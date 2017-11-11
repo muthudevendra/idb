@@ -1,0 +1,65 @@
+﻿<Controls:MetroWindow x:Class="IDB.Sale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:IDB"
+        mc:Ignorable="d"
+        Title="Sales" Height="600" Width="800"
+        EnableDWMDropShadow="True"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="493" Margin="10,68,0,0" VerticalAlignment="Top" Width="774">
+            <TabItem x:Name="ItemTab" Header="Item Details">
+                <Grid Background="White" Margin="0,-12,-7,5">
+                    <Label Content="Item Name" HorizontalAlignment="Left" Margin="24,87,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Customer Name" HorizontalAlignment="Left" Margin="420,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Button x:Name="addItemButton" HorizontalAlignment="Left" Margin="634,151,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Add Item" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="addItemButton_Click"/>
+                    <Label Content="Quantity" HorizontalAlignment="Left" Margin="420,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Date" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <TextBox x:Name="Price" Text="{Binding itemPrice, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Controls:TextBoxHelper.Watermark="Item price" HorizontalAlignment="Left" Height="23" Margin="125,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="#FF3F3F46"/>
+                    <TextBox x:Name="Quantity" Text="{Binding quantity, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Item Quantity" HorizontalAlignment="Left" Height="23" Margin="519,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46" TextChanged="Quantity_TextChanged"/>
+                    <DatePicker x:Name="SalesDate" Text="{Binding date, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Sales Date" HorizontalAlignment="Left" Height="23" Margin="125,21,0,0" VerticalAlignment="Top" Width="215" Foreground="#FF3F3F46"/>
+                    <ComboBox x:Name="ItemName" SelectedValue="{Binding itemName, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select a Item" HorizontalAlignment="Left" Margin="125,87,0,0" VerticalAlignment="Top" Width="215" SelectionChanged="ItemName_SelectionChanged"/>
+                    <ComboBox x:Name="CustomerName" SelectedValue="{Binding customerName, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select customer" HorizontalAlignment="Left" Margin="519,23,0,0" VerticalAlignment="Top" Width="215"/>
+
+                    <Button x:Name="saveButton" HorizontalAlignment="Left" Margin="559,411,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Save" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="saveButton_Click"/>
+                    <Button x:Name="clearButton" HorizontalAlignment="Left" Margin="420,411,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Clear All" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="clearButton_Click"/>
+                    <Separator HorizontalAlignment="Left" Height="20" Margin="162,181,0,0" VerticalAlignment="Top" Width="603"/>
+                    <Label Content="Sales Items" HorizontalAlignment="Left" Margin="15,171,0,0" VerticalAlignment="Top" Height="41" Width="147" Background="{x:Null}" Foreground="#FF3373F2" FontFamily="Segoe UI Light" FontSize="20"/>
+                    <DataGrid x:Name="NewSalesGrid" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="15,215,0,0" Style="{StaticResource AzureDataGrid}" AutoGenerateColumns="False" VerticalAlignment="Top" Height="153" Width="750" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding name}" Header="Item Name" Width="180"/>
+                            <DataGridTextColumn Binding="{Binding quantity}" Header="Quantity" Width="120"/>
+                            <DataGridTextColumn Binding="{Binding itemPrice}" Header="Item Price" Width="270"/>
+                            <DataGridTextColumn Binding="{Binding totalPrice}" Header="Total Price" Width="270"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Selling Center" HorizontalAlignment="Left" Margin="24,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Price" HorizontalAlignment="Left" Margin="24,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <Label Content="Invoice ID" HorizontalAlignment="Left" Margin="585,-23,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="SalesInvoiceID" Text="{Binding salesId, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="ID eg:S001" HorizontalAlignment="Left" Height="23" Margin="652,-23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Foreground="#FF3F3F46"/>
+                    <Label Content="Total Items" HorizontalAlignment="Left" Margin="24,373,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TotalSalesItems" Text="{Binding totalSalesItems, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="items" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="93,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" Foreground="#FF3F3F46"/>
+                    <Label Content="Total Price" HorizontalAlignment="Left" Margin="167,373,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TotalSalesPrice" Text="{Binding totalSalesPrice, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="price" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="232,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Foreground="#FF3F3F46"/>
+                    <ComboBox x:Name="SellingCenter" SelectedValue="{Binding sellingCenter, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Select a Selling Center" HorizontalAlignment="Left" Margin="125,52,0,0" VerticalAlignment="Top" Width="215"/>
+                    <Label Content="Request Transport" HorizontalAlignment="Left" Margin="585,373,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                    <CheckBox x:Name="TransportRequest" HorizontalAlignment="Left" Margin="709,378,0,0" VerticalAlignment="Top" Width="20"/>
+                    <TextBox x:Name="TotalItemPrice" Text="{Binding totalItemPrice, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Controls:TextBoxHelper.Watermark="total price" HorizontalAlignment="Left" Height="23" Margin="519,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Foreground="#FF3F3F46"/>
+                    <Label Content="Total Item Price" HorizontalAlignment="Left" Margin="420,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,-0.077"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Separator HorizontalAlignment="Left" Height="20" Margin="22,52,0,0" VerticalAlignment="Top" Width="762"/>
+        <Label Content="New Sale" HorizontalAlignment="Left" Margin="72,5,0,0" VerticalAlignment="Top" Height="58" Width="281" Background="{x:Null}" Foreground="#FF3373F2" FontFamily="Segoe UI Light" FontSize="34"/>
+        <Button x:Name="back" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="22,13,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="Black" Click="back_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/IDB;component/Icons/appbar.arrow.left.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

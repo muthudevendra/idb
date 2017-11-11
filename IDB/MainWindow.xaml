@@ -1,0 +1,56 @@
+﻿<Controls:MetroWindow x:Class="IDB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:IDB"
+        mc:Ignorable="d"
+        Title="Industrial Development Board" Height="400" Width="600"
+        EnableDWMDropShadow="True"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl x:Name="SignControl" HorizontalAlignment="Left" Height="349" Margin="10,10,0,0" VerticalAlignment="Top" Width="572">
+            <TabItem Header="Login Here">
+                <Grid Background="White" Margin="-6,0,-4,-3">
+                    <Controls:ProgressRing x:Name="ProgressRing" IsActive="False" Margin="271,98,263,130" Height="42" Width="42" />
+                    <TextBox x:Name="UserNameLogin" Text="{Binding userNameLogin}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Enter your Username here" HorizontalAlignment="Left" Height="23" Margin="64,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="467" Foreground="#FF3F3F46"/>
+                    <PasswordBox x:Name="PasswordLogin" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Enter your Password here" HorizontalAlignment="Left" Height="23" Margin="64,167,0,0" VerticalAlignment="Top" Width="467" Foreground="#FF3F3F46"/>
+                    <Label Content="Username" HorizontalAlignment="Left" Margin="64,71,0,0" VerticalAlignment="Top" Width="77" Foreground="Black"/>
+                    <Label Content="Password" HorizontalAlignment="Left" Margin="64,141,0,0" VerticalAlignment="Top" Width="77" Foreground="Black"/>
+                    <Label Content="Log In" HorizontalAlignment="Left" Margin="238,0,0,0" VerticalAlignment="Top" Width="127" Height="62" Foreground="Black" FontSize="36" FontFamily="Segoe UI Light"/>
+                    <StackPanel HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="61" Margin="172,0,0,0">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="Icons/appbar.unlock.png"/>
+                        </StackPanel.Background>
+                    </StackPanel>
+                    <Button x:Name="loginButton"  HorizontalAlignment="Left" Margin="216,221,0,0" VerticalAlignment="Top" Width="127" Height="41" BorderBrush="#FFCCCCCC" Content="Login" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="loginButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Create New Account" Foreground="Black">
+                <Grid Background="White" Margin="-6,6,-4,-3">
+                    <Grid Background="White" Margin="10,-14,10,10">
+                        <TextBox x:Name="UserNameNew" Text="{Binding userNameNew}" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Enter a Unique Username here" HorizontalAlignment="Left" Height="23" Margin="49,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="483" Foreground="#FF3F3F46" Grid.ColumnSpan="2"/>
+                        <PasswordBox x:Name="PasswordNew" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Enter your Password here" HorizontalAlignment="Left" Height="23" Margin="49,156,0,0" VerticalAlignment="Top" Width="225" Foreground="#FF3F3F46"/>
+                        <PasswordBox x:Name="ConfirmPasswordNew" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Confirm your Password here" HorizontalAlignment="Left" Height="23" Margin="302,156,0,0" VerticalAlignment="Top" Width="230" Foreground="#FF3F3F46"/>
+                        <RadioButton x:Name="Admin" Content="Admin" HorizontalAlignment="Left" Margin="215,208,0,0" VerticalAlignment="Top" Foreground="Black"/>
+                        <RadioButton x:Name="Employee" Content="Employee" IsChecked="True" HorizontalAlignment="Left" Margin="302,208,0,0" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="0.329,0.611"/>
+                        <Button x:Name="signUpButton"  HorizontalAlignment="Left" Margin="215,254,0,0" VerticalAlignment="Top" Width="127" Height="41" BorderBrush="#FFCCCCCC" Content="Sign Up" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" FontSize="12" Click="signUpButton_Click"/>
+                        <Label Content="Username" HorizontalAlignment="Left" Margin="49,63,0,0" VerticalAlignment="Top" Width="77" Foreground="Black"/>
+                        <Label Content="Password" HorizontalAlignment="Left" Margin="49,130,0,0" VerticalAlignment="Top" Width="77" Foreground="Black"/>
+                        <StackPanel HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="61" Margin="154,0,0,0">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="/IDB;component/Icons/appbar.lock.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                        <Label Content="Sign Up" HorizontalAlignment="Left" Margin="215,0,0,0" VerticalAlignment="Top" Width="127" Height="62" Foreground="Black" FontSize="36" FontFamily="Segoe UI Light"/>
+                        <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="302,129,0,0" VerticalAlignment="Top" Width="107" Foreground="Black"/>
+                        <Label Content="Account Type" HorizontalAlignment="Left" Margin="49,204,0,0" VerticalAlignment="Top" Width="91" Foreground="Black"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Controls:MetroWindow>

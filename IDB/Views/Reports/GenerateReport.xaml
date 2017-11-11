@@ -1,0 +1,41 @@
+﻿<Controls:MetroWindow x:Class="IDB.GenerateReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:IDB"
+        xmlns:rv ="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        mc:Ignorable="d"
+        Title="Reports" Height="600" Width="800"
+        EnableDWMDropShadow="True"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Separator HorizontalAlignment="Left" Height="20" Margin="22,52,0,0" VerticalAlignment="Top" Width="762"/>
+        <Label Content="Reports" HorizontalAlignment="Left" Margin="72,5,0,0" VerticalAlignment="Top" Height="58" Width="281" Background="{x:Null}" Foreground="#FF3373F2" FontFamily="Segoe UI Light" FontSize="34"/>
+        <Button x:Name="back" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="22,13,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="Black" Click="back_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Icons/appbar.arrow.left.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Select Category" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CatogoryName" HorizontalAlignment="Left" Margin="120,81,0,0" VerticalAlignment="Top" Width="178" SelectionChanged="CatogoryName_SelectionChanged">
+            <ComboBoxItem IsSelected="True">Select Report category</ComboBoxItem>
+            <ComboBoxItem>Stock Report</ComboBoxItem>
+            <ComboBoxItem>Purchase Report</ComboBoxItem>
+            <ComboBoxItem>Sales Report</ComboBoxItem>
+            <ComboBoxItem>Transportations Report</ComboBoxItem>
+            <ComboBoxItem>Suppliers Report</ComboBoxItem>
+            <ComboBoxItem>Customers Report</ComboBoxItem>
+            <ComboBoxItem>External Resource Report</ComboBoxItem>
+        </ComboBox>
+
+        <WindowsFormsHost HorizontalAlignment="Left" Height="443" Margin="10,118,0,0" VerticalAlignment="Top" Width="774">
+            <rv:ReportViewer x:Name="ReportViewer"/>
+        </WindowsFormsHost>
+        <Button x:Name="generateButton" HorizontalAlignment="Left" Margin="684,79,0,0" VerticalAlignment="Top" Width="100" Height="30" BorderBrush="#FFCCCCCC" Content="Generate" Foreground="Black" Background="{x:Null}" FontFamily="Segoe UI Light" RenderTransformOrigin="0.538,-0.615" FontSize="12" Click="generate_Click"/>
+        <ComboBox x:Name="options" Visibility="Hidden" Controls:TextBoxHelper.Watermark="Select a Name" HorizontalAlignment="Left" Margin="474,81,0,0" VerticalAlignment="Top" Width="178"/>
+    </Grid>
+</Controls:MetroWindow>
